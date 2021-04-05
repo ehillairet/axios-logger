@@ -44,12 +44,12 @@ class StringBuilder {
     }
 
     makeUrl(url?: string) {
-        if(this.config.url && url) this.printQueue.push(chalk.green.bold(url));
+        if(this.config.url && url) this.printQueue.push(chalk.cyan.bold(url));
         return this;
     }
 
     makeMethod(method?: string) {
-        if(this.config.method && method) this.printQueue.push(chalk.yellow(method.toUpperCase()));
+        if(this.config.method && method) this.printQueue.push(chalk.yellow.bold(method.toUpperCase()));
         return this;
     }
 
@@ -59,9 +59,9 @@ class StringBuilder {
     }
 
     makeStatus(status?: number, statusText?: string) {
-        if(this.config.status && this.config.statusText && status && statusText) this.printQueue.push(`${status}:${statusText}`);
-        else if(this.config.status && status) this.printQueue.push(`${status}`);
-        else if(this.config.statusText && statusText) this.printQueue.push(statusText);
+        if(this.config.status && this.config.statusText && status && statusText) this.printQueue.push(chalk.yellow.bold(`${status}:${statusText}`));
+        else if(this.config.status && status) this.printQueue.push(chalk.yellow.bold(`${status}`));
+        else if(this.config.statusText && statusText) this.printQueue.push(chalk.yellow.bold(statusText));
         return this;
     }
 
