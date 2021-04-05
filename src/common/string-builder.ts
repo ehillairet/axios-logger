@@ -15,7 +15,7 @@ class StringBuilder {
 
     makeLogTypeWithPrefix(logType: string) {
         const prefix = this.config.prefixText === false ? `[${logType}]` : `[${this.config.prefixText || 'Axios'}][${logType}]`;
-        this.printQueue.push(chalk.green(prefix));
+        this.printQueue.push(chalk.yellow.bgBlack.bold(prefix));
         return this;
     }
 
@@ -44,7 +44,7 @@ class StringBuilder {
     }
 
     makeUrl(url?: string) {
-        if(this.config.url && url) this.printQueue.push(url);
+        if(this.config.url && url) this.printQueue.push(chalk.green.bold(url));
         return this;
     }
 
@@ -66,7 +66,7 @@ class StringBuilder {
     }
 
     build() {
-        return this.printQueue.join(' ');
+        return '\n' + this.printQueue.join('\n') + '\n';
     }
 }
 
